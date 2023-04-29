@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import Header from '@/components/layout/Header';
+import Home from './home';
+import ImageSlider from '@/components/ImageSlider';
 
 export default function Index() {
   return (
@@ -10,6 +12,7 @@ export default function Index() {
         <link rel='icon' href='@/public/favicon.ico'/>
       </Head>
       <Header />
+      <Home />
     </div>
   )
 }
