@@ -3,6 +3,8 @@ import HeroContent from '../../components/HeroContent';
 import ImageSlider from '../../components/ImageSlider';
 import Campaigns from '../../components/Campaigns';
 import MenuWrapper from '../../components/product/MenuWrapper';
+import About from '@/components/ui/About';
+import Reservation from '@/components/Reservation';
 
 const HomePage = () => {
   return (
@@ -11,6 +13,8 @@ const HomePage = () => {
         <ImageSlider />
         <Campaigns />
         <MenuWrapper />
+        <About />
+        <Reservation />
     </div>
   )
 }
