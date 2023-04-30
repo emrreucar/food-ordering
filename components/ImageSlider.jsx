@@ -12,6 +12,15 @@ const ImageSlider = () => {
     arrows: false,
     autoplay:true,
     autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          dots: false,
+        }
+      }
+    ]
   };
   return (
       <div className="max-w-full h-[60vh] bg-gradient-to-r from-primary/70 to-white ">
