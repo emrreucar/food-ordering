@@ -1,13 +1,13 @@
-'use client';
+"use client";
 import React, { useState } from "react";
 import Logo from "../ui/Logo";
 import { FaShoppingCart, FaUserAlt, FaSearch } from "react-icons/fa";
 import { RiMenu3Fill } from "react-icons/ri";
 import { AiOutlineClose } from "react-icons/ai";
 import Search from "../ui/Search";
-import Link from "next/link";
 import Title from "../ui/Title";
-import {useRouter} from 'next/router';
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Header = () => {
   const [isSearchModal, setIsSearchModal] = useState(false);
@@ -19,43 +19,49 @@ const Header = () => {
   };
 
   return (
-    <div className={`h-[5.5rem] z-40 relative ${router.asPath === '/' ? 'bg-transparent': 'bg-secondary'} `}>
+    <div
+      className={`h-[5.5rem] z-40 relative ${
+        router.asPath === "/" ? "bg-transparent" : "bg-secondary"
+      } `}
+    >
       <div className="container mx-auto text-white flex justify-between items-center h-full">
         <div>
-          <Logo />
+          <Link href='/'>
+            <Logo />
+          </Link>
         </div>
         <nav className="sm:block hidden">
           <ul className="flex gap-x-4 pl-24">
             <li className="hover:text-primary duration-300">
-              <a href="#">HOME</a>
+              <Link href="/">HOME</Link>
             </li>
             <li className="hover:text-primary duration-300">
-              <a href="#">MENU</a>
+              <Link href="/menu">MENU</Link>
             </li>
             <li className="hover:text-primary duration-300">
-              <a href="#">ABOUT</a>
+              <Link href="/about">ABOUT</Link>
             </li>
             <li className="hover:text-primary duration-300">
-              <a href="#">BOOK TABLE</a>
+              <Link href="/reservation">BOOK TABLE</Link>
             </li>
           </ul>
         </nav>
         <div className="flex items-center gap-x-4">
-          <a href="#" className="hover:text-primary duration-300">
+          <Link href="/auth/login" className="hover:text-primary duration-300">
             <FaUserAlt />
-          </a>
-          <a href="#" className="hover:text-primary duration-300">
+          </Link>
+          <Link href="/cart" className="hover:text-primary duration-300">
             <FaShoppingCart />
-          </a>
+          </Link>
           <button
             onClick={() => setIsSearchModal(true)}
             className="hover:text-primary duration-300"
           >
             <FaSearch />
           </button>
-          <a href="#" className="md:inline-block hidden">
+          <Link href="/auth/login" className="md:inline-block hidden">
             <button className="btn-primary">Order Online</button>
-          </a>
+          </Link>
           <button onClick={handleNav} className="sm:hidden">
             <RiMenu3Fill className="text-white" size={20} />
           </button>
@@ -93,18 +99,18 @@ const Header = () => {
           </div>
           <div className="border-b border-gray-700 my-4"></div>
           <div className="">
-            <ul className="flex flex-col gap-y-12">
-              <li>
-                <a href="#" className="text-gray-700 hover:text-black duration-300">HOME</a>
+            <ul className="flex flex-col gap-y-4">
+              <li className="hover:text-secondary text-gray-700 hover:font-extrabold duration-300">
+                <Link href="/">HOME</Link>
               </li>
-              <li>
-                <a href="#" className="text-gray-700 hover:text-black duration-300">MENU</a>
+              <li className="hover:text-secondary text-gray-700 hover:font-extrabold duration-300">
+                <Link href="/menu">MENU</Link>
               </li>
-              <li>
-                <a href="#" className="text-gray-700 hover:text-black duration-300">ABOUT</a>
+              <li className="hover:text-secondary text-gray-700 hover:font-extrabold duration-300">
+                <Link href="/about">ABOUT</Link>
               </li>
-              <li>
-                <a href="#" className="text-gray-700 hover:text-black duration-300">BOOK TABLE</a>
+              <li className="hover:text-secondary text-gray-700 hover:font-extrabold duration-300">
+                <Link href="/reservation">BOOK TABLE</Link>
               </li>
             </ul>
           </div>

@@ -1,88 +1,89 @@
 import React from "react";
 import Title from "../ui/Title";
 import { BiCurrentLocation, BiPhoneCall, BiMailSend } from "react-icons/bi";
-import { AiFillFacebook, AiOutlineTwitter, AiFillLinkedin, AiOutlineInstagram } from 'react-icons/ai';
-import { BsPinterest } from 'react-icons/bs';
+import { AiFillFacebook, AiFillLinkedin, AiOutlineInstagram } from 'react-icons/ai';
+import { BsPinterest, BsTwitter } from 'react-icons/bs';
 
 const Footer = () => {
   return (
-    <div className="bg-secondary text-white pt-[25px] pb-[24px] ">
-      <div className="container mx-auto">
-        <div className="flex flex-wrap justify-between text-center my-20">
-          <div>
-            <Title addClass="text-[30px] ">Contact Us</Title>
-            <div className="flex flex-col gap-y-2 mt-4">
-              <div>
-                <span className="flex gap-x-2 justify-center items-center hover:text-primary">
-                  <BiCurrentLocation /> Location
-                </span>
+    <div className="bg-secondary text-white">
+      <div className="container mx-auto pt-16 pb-6">
+        <div className="flex md:justify-between justify-center text-center flex-wrap md:gap-y-0 gap-y-6 ">
+          <div className="md:flex-1">
+            <Title addClass="text-[30px]">Contact Us</Title>
+            <div className="flex flex-col gap-y-2 mt-3">
+              <div className="flex items-center justify-center">
+                <BiCurrentLocation />
+                <span className="inline-block ml-2">Location</span>
               </div>
-              <div>
-                <span className="flex gap-x-2 justify-center items-center hover:text-primary">
-                  <BiPhoneCall/> Call +45 9123123
-                </span>
+              <div className="flex items-center justify-center">
+                <BiPhoneCall />
+                <span className="inline-block ml-2">Call +01 1234567890</span>
               </div>
-              <div>
-                <span className="flex gap-x-2 justify-center items-center hover:text-primary">
-                  <BiMailSend /> Email
-                </span>
+              <div className="flex items-center justify-center">
+                <BiMailSend />
+                <span className="inline-block ml-2">demo@gmail.com</span>
               </div>
             </div>
           </div>
-          <div>
-            <Title addClass="text-[30px] ">Feane</Title>
-            <div className="flex flex-col gap-y-2 mt-4">
-              <div className="md:max-w-[500px] ">
-                <span className="gap-x-2 items-center text-center ">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex explicabo magnam officiis distinctio quae blanditiis commodi deserunt odit. Sint, aperiam?
-                </span>
-              </div>
-              <div>
-                <span className="gap-x-2 flex items-center text-center mt-2 justify-center cursor-pointer">
-                  {/* icons */}
-                  <div className="bg-white rounded-full w-8 h-8 text-center flex items-center justify-center">
-                    <AiFillFacebook size={20} className="text-secondary" />
-                  </div>
-                  <div className="bg-white rounded-full w-8 h-8 text-center flex items-center justify-center">
-                    <AiOutlineTwitter size={20} className="text-secondary" />
-                  </div>
-                  <div className="bg-white rounded-full w-8 h-8 text-center flex items-center justify-center">
-                    <AiFillLinkedin size={20} className="text-secondary" />
-                  </div>
-                  <div className="bg-white rounded-full w-8 h-8 text-center flex items-center justify-center">
-                    <AiOutlineInstagram size={20} className="text-secondary" />
-                  </div>
-                  <div className="bg-white rounded-full w-8 h-8 text-center flex items-center justify-center">
-                    <BsPinterest size={20} className="text-secondary" />
-                  </div>
-                </span>
-              </div>
+          <div className="md:flex-1">
+            <Title addClass="text-[38px]">Feane</Title>
+            <p className="mt-3">
+              Necessary, making this the first true generator on the Internet.
+              It uses a dictionary of over 200 Latin words, combined with
+            </p>
+            <div className="flex items-center justify-center mt-5 gap-x-2">
+              <a
+                href="#"
+                className="w-8 h-8 grid place-content-center bg-white text-secondary rounded-full "
+              >
+                <AiFillFacebook />
+              </a>
+              <a
+                href="#"
+                className="w-8 h-8 grid place-content-center bg-white text-secondary rounded-full"
+              >
+                <BsTwitter />
+              </a>
+              <a
+                href="#"
+                className="w-8 h-8 grid place-content-center bg-white text-secondary rounded-full"
+              >
+                <AiFillLinkedin />
+              </a>
+              <a
+                href="#"
+                className="w-8 h-8 grid place-content-center bg-white text-secondary rounded-full"
+              >
+                <AiOutlineInstagram />
+              </a>
+              <a
+                href="#"
+                className="w-8 h-8 grid place-content-center bg-white text-secondary rounded-full"
+              >
+                <BsPinterest />
+              </a>
             </div>
           </div>
-          <div>
-            <Title addClass="text-[30px] ">Opening Hours</Title>
-            <div className="flex flex-col gap-y-2 mt-4">
+          <div className="md:flex-1">
+            <Title addClass="text-[30px]">Opening Hours</Title>
+            <div className="flex flex-col gap-y-2 mt-3">
               <div>
-                <span className="gap-x-2 items-center text-center">
-                  Everyday
-                </span>
+                <span className="inline-block ml-2">Everyday</span>
               </div>
               <div>
-                <span className="gap-x-2 items-center text-center">
-                  10.00 AM - 10.00 PM
-                </span>
+                <span className="inline-block ml-2">10.00 Am -10.00 Pm</span>
               </div>
             </div>
           </div>
         </div>
-        <div>
-          <p className="text-center mt-10">
-            Copyright &copy; 2023 Made with ❤ by <span className="text-primary">EMRE UÇAR</span>
-          </p>
-        </div>
+        <p className="text-center mt-10">
+          İskenderun Teknik Üniversitesi Bilgisayar Mühendisliği Bitirme Projesi <br /> <span className="font-bold text-primary">Emre Uçar</span> tarafından yapılmıştır.
+        </p>
       </div>
     </div>
   );
 };
 
 export default Footer;
+
