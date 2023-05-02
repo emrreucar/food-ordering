@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import Logo from "../ui/Logo";
 import { FaShoppingCart, FaUserAlt, FaSearch } from "react-icons/fa";
@@ -8,10 +7,13 @@ import Search from "../ui/Search";
 import Title from "../ui/Title";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [isSearchModal, setIsSearchModal] = useState(false);
   const [nav, setNav] = useState(false);
+  const cart = useSelector((state) => state.cart);
+
   const router = useRouter();
 
   const handleNav = () => {
@@ -26,7 +28,7 @@ const Header = () => {
     >
       <div className="container mx-auto text-white flex justify-between items-center h-full">
         <div>
-          <Link href='/'>
+          <Link href="/">
             <Logo />
           </Link>
         </div>
@@ -51,7 +53,10 @@ const Header = () => {
             <FaUserAlt />
           </Link>
           <Link href="/cart" className="hover:text-primary duration-300">
-            <FaShoppingCart />
+            <span className="relative">
+              <FaShoppingCart />
+              <span className="w-4 h-4 text-xs grid place-content-center text-black font-bold p-2 rounded-full bg-primary absolute -top-2 -right-3"> {cart.products.length} </span>
+            </span>
           </Link>
           <button
             onClick={() => setIsSearchModal(true)}

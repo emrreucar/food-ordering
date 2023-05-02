@@ -6,7 +6,7 @@ import Link from "next/link";
 const MenuItem = () => {
   return (
     <div className="bg-secondary rounded-3xl hover:scale-105 duration-300 shadow-xl shadow-gray-400">
-      <Link href="product">
+      <Link href="/product">
         <div className="w-full bg-[#f1f2f3] h-[210px] grid place-content-center rounded-bl-[46px] rounded-tl-2xl rounded-tr-2xl ">
           <div className="relative w-36 h-36 hover:scale-110 duration-300">
             <Image src="/images/f1.png" fill alt="/" />

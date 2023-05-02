@@ -8,9 +8,9 @@ import { FaFacebookF } from 'react-icons/fa';
 
 const Footer = () => {
 
-  const [linkAddress, setLinkAddress] = useState("");
-  const [iconName, setIconName] = useState("");
-  const [icons, setIcons] = useState([])
+  // const [linkAddress, setLinkAddress] = useState("");
+  // const [iconName, setIconName] = useState("");
+  // const [icons, setIcons] = useState([])
 
   const onSubmit = async (values, actions) => {
     await new Promise((resolve) => setTimeout(resolve, 3000));
@@ -99,7 +99,7 @@ const Footer = () => {
           />
         ))}
       </div>
-      <div className="mt-4 flex justify-between items-center">
+      {/* <div className="mt-4 flex justify-between items-center">
         <div className="flex gap-4 items-center">
           <Input placeholder="Link Address" value="https://" />
           <Input placeholder="Icon Name" value="< />" />
@@ -125,7 +125,7 @@ const Footer = () => {
             </button>
           </li>
         </ul>
-      </div>
+      </div> */}
       <button className="btn-primary mt-4 ">Update</button>
     </form>
   );
