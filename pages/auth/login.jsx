@@ -5,7 +5,13 @@ import { loginSchema } from "@/schema/login";
 import { AiFillGithub } from "react-icons/ai";
 import Link from "next/link";
 
+import { useSession, signIn } from "next-auth/react";
+
 const Login = () => {
+
+  const { data: session } = useSession();
+  console.log(session);
+
   const onSubmit = async (values, actions) => {
     await new Promise((resolve) => setTimeout(resolve, 3000));
     actions.resetForm();
@@ -58,8 +64,8 @@ const Login = () => {
             />
           ))}
           <div className="flex flex-col w-full gap-y-2">
-            <button className="btn-primary uppercase">Login</button>
-            <button className="btn-primary !bg-secondary">
+            <button className="btn-primary uppercase" type="submit">Login</button>
+            <button className="btn-primary !bg-secondary" type="button" onClick={()=> signIn("github")}>
               <div className="flex items-center justify-center">
                 <AiFillGithub className="mr-2" /> GITHUB
               </div>
