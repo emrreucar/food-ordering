@@ -1,13 +1,26 @@
+import axios from "axios";
 import { useFormik } from "formik";
 import Title from "@/components/ui/Title";
 import Input from "@/components/form/Input";
 import { registerSchema } from "@/schema/register";
 import { AiFillGithub } from "react-icons/ai";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const onSubmit = async (values, actions) => {
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/users/register`,
+        values
+      );
+      if(res.status === 200){
+        toast.success("User created successfully 😁");
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+      console.log(error);
+    }
     actions.resetForm();
   };
 
@@ -77,8 +90,10 @@ const Register = () => {
               onBlur={handleBlur}
             />
           ))}
-          <div className="flex flex-col w-full gap-y-2">
-            <button className="btn-primary uppercase">REGISTER</button>
+          <div className="flex flex-col w-full gap-y-3 mt-6">
+            <button className="btn-primary uppercase" type="submit">
+              REGISTER
+            </button>
             <span className="inline">
               <Link
                 href="/auth/login"

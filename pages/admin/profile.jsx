@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from "react";
 import Image from "next/image";
 import { RiEBike2Fill } from "react-icons/ri";
@@ -9,9 +10,27 @@ import Order from "@/components/admin/Order";
 import Product from "@/components/admin/Products";
 import Category from "@/components/admin/Category";
 import Footer from "@/components/admin/Footer";
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 const Index = () => {
   const [tabs, setTabs] = useState(0);
+
+  const { push } = useRouter();
+
+  const closeAdminAccount = async () => {
+    try {
+      if(confirm("Are you sure you want to close your Admin Account?")){
+        const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/admin`);
+        if(res.status === 200){
+          push("/admin");
+          toast.success("Admin Account Closed!");
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="flex px-20 py-10 min-h-[calc(100vh_-_433px)] lg:flex-row flex-col ">
@@ -70,7 +89,7 @@ const Index = () => {
             className={`border w-full p-3 flex items-center gap-x-2 hover:bg-primary duration-300 cursor-pointer hover:text-white ${
               tabs === 4 ? "bg-primary text-white" : ""
             }`}
-            onClick={() => setTabs(4)}
+            onClick={closeAdminAccount}
           >
             <BiExit />
             <button className="">Exit</button>
@@ -88,6 +107,21 @@ const Index = () => {
       {/* right side end */}
     </div>
   );
+};
+
+export const getServerSideProps = (ctx) => {
+  const myCookie = ctx.req?.cookies || "";
+  if(myCookie.token !== process.env.ADMIN_TOKEN){
+    return {
+      redirect: {
+        destination: "/admin",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
 };
 
 export default Index;
