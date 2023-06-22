@@ -6,16 +6,19 @@ import { registerSchema } from "@/schema/register";
 import { AiFillGithub } from "react-icons/ai";
 import Link from "next/link";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 const Register = () => {
+  const { push } = useRouter();
   const onSubmit = async (values, actions) => {
     try {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/users/register`,
         values
       );
-      if(res.status === 200){
+      if (res.status === 200) {
         toast.success("User created successfully 😁");
+        push("/auth/login");
       }
     } catch (error) {
       toast.error(error.response.data.message);
@@ -108,5 +111,6 @@ const Register = () => {
     </div>
   );
 };
+
 
 export default Register;

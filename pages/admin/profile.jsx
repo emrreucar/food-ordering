@@ -1,28 +1,30 @@
-import axios from 'axios';
+import axios from "axios";
 import React, { useState } from "react";
 import Image from "next/image";
 import { RiEBike2Fill } from "react-icons/ri";
 import { BiExit } from "react-icons/bi";
 import { MdRestaurantMenu } from "react-icons/md";
-import { CgMenuGridO } from 'react-icons/cg';
-import { BsLayoutTextWindowReverse } from 'react-icons/bs';
+import { CgMenuGridO } from "react-icons/cg";
+import { BsLayoutTextWindowReverse } from "react-icons/bs";
 import Order from "@/components/admin/Order";
 import Product from "@/components/admin/Products";
 import Category from "@/components/admin/Category";
 import Footer from "@/components/admin/Footer";
-import { useRouter } from 'next/router';
-import { toast } from 'react-toastify';
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import AddProduct from "@/components/admin/AddProduct";
 
 const Index = () => {
   const [tabs, setTabs] = useState(0);
+  const [isProductModal, setIsProductModal] = useState(false);
 
   const { push } = useRouter();
 
   const closeAdminAccount = async () => {
     try {
-      if(confirm("Are you sure you want to close your Admin Account?")){
+      if (confirm("Are you sure you want to close your Admin Account?")) {
         const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/admin`);
-        if(res.status === 200){
+        if (res.status === 200) {
           push("/admin");
           toast.success("Admin Account Closed!");
         }
@@ -30,7 +32,7 @@ const Index = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <div className="flex px-20 py-10 min-h-[calc(100vh_-_433px)] lg:flex-row flex-col ">
@@ -72,7 +74,7 @@ const Index = () => {
             }`}
             onClick={() => setTabs(2)}
           >
-            <CgMenuGridO/>
+            <CgMenuGridO />
             <button className="">Categories</button>
           </li>
           <li
@@ -104,6 +106,14 @@ const Index = () => {
       {tabs === 1 && <Order />}
       {tabs === 2 && <Category />}
       {tabs === 3 && <Footer />}
+      {/* {isProductModal && <AddProduct setIsProductModal={setIsProductModal} />} */}
+      {isProductModal && <AddProduct setIsProductModal={setIsProductModal} />}
+      <button
+        className="btn-primary w-12 h-12 !p-0 absolute bottom-14 right-10 text-4xl"
+        onClick={() => setIsProductModal(true)}
+      >
+        +
+      </button>
       {/* right side end */}
     </div>
   );
@@ -111,7 +121,7 @@ const Index = () => {
 
 export const getServerSideProps = (ctx) => {
   const myCookie = ctx.req?.cookies || "";
-  if(myCookie.token !== process.env.ADMIN_TOKEN){
+  if (myCookie.token !== process.env.ADMIN_TOKEN) {
     return {
       redirect: {
         destination: "/admin",

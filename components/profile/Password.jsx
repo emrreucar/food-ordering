@@ -4,7 +4,7 @@ import Input from '@/components/form/Input';
 import { useFormik } from "formik";
 import { newPasswordSchema } from "@/schema/newPassword";
 
-const Password = () => {
+const Password = ({ user }) => {
     const onSubmit = async (values, actions) => {
         await new Promise((resolve) => setTimeout(resolve, 3000));
         actions.resetForm();
